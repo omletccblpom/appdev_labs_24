@@ -30,11 +30,11 @@
                         <strong>{{ comment.author }}</strong>
                         <p>{{ comment.text }}</p>
                         {% if comment.replies %}
-                            <ul>
-                                {% for reply in comment.replies %}
-                                    <li><strong>{{ reply.author }}</strong>: {{ reply.text }}</li>
-                                {% endfor %}
-                            </ul>
+                        <ul>
+                            {% for reply in comment.replies %}
+                                <li><strong>{{ reply.author }}</strong>: {{ reply.text }}</li>
+                            {% endfor %}
+                        </ul>
                         {% endif %}
                     </div>
                 {% endfor %}
