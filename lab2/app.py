@@ -4,21 +4,17 @@ app = Flask(__name__)
 
 application = app
 
-
 @app.route('/')
 def index():
     return render_template('index.html')
-
 
 @app.route('/url')
 def url():
     return render_template('url.html', title="Параметры URL", )
 
-
 @app.route('/headers')
 def headers():
     return render_template('headers.html', title="Заголовки")
-
 
 @app.route('/cookies')
 def cookies():
@@ -29,11 +25,9 @@ def cookies():
         resp.set_cookie('user', 'admin')
     return resp
 
-
 @app.route('/forms', methods=['GET', 'POST'])
 def forms():
     return render_template('forms.html', title="Параметры формы")
-
 
 @app.route('/calc')
 def calc():
@@ -52,7 +46,6 @@ def calc():
 
     return render_template('calc.html', title="Калькулятор", result=result)
 
-
 @app.route("/phoneNumber", methods=["POST", "GET"])
 def phoneNumber():
     if request.method == 'POST':
@@ -64,13 +57,12 @@ def phoneNumber():
 
         error = ""
         if not all([symbol in [" ", "(", ")", "-", ".", "+", *list(map(str, list(range(10))))] for symbol in phone]):
-            error = "Позорник, ты не то вводишь!"
-        elif ((phone_num[0] in ["7", "8"] and len(phone_num) != 11) or
-              phone_num[0] not in ["7", "8"] and len(phone_num) != 10):
-            error = "Позорник, не столько цифр в номере!"
+            error = "Недопустимый ввод. Неверное количество цифр."
+        elif ((phone_num[0] in ["7", "8"] and len(phone_num) != 11) or phone_num[0] not in ["7", "8"] and len(phone_num) != 10):
+            error = "Недопустимый ввод. В номере телефона встречаются недопустимые символы."
 
         if error != "":
-            return render_template("phoneNumber.html", title="Номер телефона", phone=error)
+            return render_template("phoneNumber.html", title="Номер телефона", error=error)
 
         if len(phone_num) == 10:
             phone_num.insert(0, "8")
@@ -79,7 +71,6 @@ def phoneNumber():
                                phone="8-{1}{2}{3}-{4}{5}{6}-{7}{8}-{9}{10}".format(*phone_num))
     else:
         return render_template("phoneNumber.html", title="Номер телефона")
-
 
 if __name__ == '__main__':
     app.run()

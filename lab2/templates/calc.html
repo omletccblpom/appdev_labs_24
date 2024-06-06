@@ -1,5 +1,6 @@
-{% extends "base.html" %} {% block content %}
+{% extends "base.html" %} 
 
+{% block content %}
 <div class="container">
     <h1>Калькулятор</h1>
     <form class="d-flex">
@@ -11,5 +12,4 @@
     </form>
     {%if result%} <span>Ответ: {{result}}</span>{%endif%}
 </div>
-
 {% endblock %} 
