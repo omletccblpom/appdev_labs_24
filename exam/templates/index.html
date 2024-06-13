@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="my-4">
+        <h1>Библиотека</h1>
+    </div>
+    <div class="row mb-4">
+        {% for book in books_list %}
+            <div class="col-lg-2 d-flex">
+                <div class="card mb-4 mx-2">
+                    <div class="card-body">
+                        <h2 class="card-title">{{ book.name }}</h2>
+                        <div class="img-fluid">
+                            <img class="img-fluid" src="{{ url_for('static', filename='images/' + book.imgname) }}" alt="{{book.name}} обложка">
+                        </div>
+                        <p class="card-text">
+                            Описание: {{ book.description }}
+                            <br>
+                            Издатель: {{ book.publisher }}
+                            <br>
+                            Автор: {{ book.author }}
+                            <br>
+                            Объем: {{ book.length }} страниц
+                            <br>
+                            Год выпуска: {{ book.year }}
+                        </p>
+                        <div class="row justify-content-around">
+                            <a href="{{ url_for('index') }}" class="btn btn-primary col-sm-5 my-2">Детали книги</a>
+                            <a href="{{ url_for('index') }}" class="btn btn-dark col-sm-5 my-2">Редактировать</a>
+                            <a href="{{ url_for('index') }}" class="btn btn-danger col-sm-5 my-2">Удалить</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
