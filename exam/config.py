@@ -1,5 +1,0 @@
-SECRET_KEY = '3c34c03d6d9d88e3f7cfbb8c16c5b602'
-MYSQL_USER = 'std_2630_exam'
-MYSQL_PASSWORD = 'Password'
-MYSQL_HOST = 'std-mysql.ist.mospolytech.ru'
-MYSQL_DATABASE = 'std_2630_exam'
