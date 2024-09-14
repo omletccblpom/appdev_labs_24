@@ -67,8 +67,7 @@ def phoneNumber():
         if len(phone_num) == 10:
             phone_num.insert(0, "8")
 
-        return render_template("phoneNumber.html", title="Номер телефона",
-                               phone="8-{1}{2}{3}-{4}{5}{6}-{7}{8}-{9}{10}".format(*phone_num))
+        return render_template("phoneNumber.html", title="Номер телефона", phone="8-{1}{2}{3}-{4}{5}{6}-{7}{8}-{9}{10}".format(*phone_num))
     else:
         return render_template("phoneNumber.html", title="Номер телефона")
 
